@@ -78,7 +78,28 @@ Select:
 4. Additional configuration → Treat missing data as = Breaching. Then:
    - when data is available → metric ≥ 0 → alarm = `OK`;
    - when data is not available (server/agent/network down) → missing → alarm = `ALARM`.
+  
+## **SNS topic (notifications)**
 
+1. Open Amazon SNS → Topics → Create topic (**Standard** type).
+2. Name it, for example, drs-failover-alerts.
+3. Add an email subscription to your email address.
+
+Later, add this topic as an **Alarm action** in CloudWatch (so that you receive an email when an `ALARM` is triggered).
+
+## **Lambda function**
+
+1. I create Lambda (Python 3.x) and link the IAM role above.
+2. I add the env variable SOURCE_SERVER_ID = s-xxxxxxxxxxxxxxxxx (the ID of my DRS source server).
+3. Code in [lambda_function.py](https://github.com/RebelsBoss/AWS_Elastic_Disaster_Recovery/blob/main/lambda_function.py)
+
+Part **drs.start_recovery()** corresponds to the `StartRecovery` API and launches the Recovery Instance from the last point.
+
+4. CloudWatch Alarm → Lambda binding. Options:
+   - **Directly**: Alarm action = Lambda function (CloudWatch can now directly call Lambda).
+   - **Via SNS**: Alarm → SNS → Lambda (Lambda is subscribed to the SNS topic).
+
+In my scheme, a **direct Lambda call** is sufficient, and I only use SNS for email notifications.
 
 ## **Documentation**
 
