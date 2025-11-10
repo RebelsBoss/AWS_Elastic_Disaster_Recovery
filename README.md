@@ -32,9 +32,7 @@ Server recovery from on-premises to the cloud in ~30 minutes.
 ### **CloudWatch Agent на on-prem Windows**
 
 1. In IAM, create a user/role with the **`CloudWatchAgentServerPolicy`** policy (minimum, so that the agent can send metrics and logs).   
-2. On Windows, download the agent:
-https://s3.amazonaws.com/amazoncloudwatch-agent/windows/amd64/latest/amazon-cloudwatch-agent.msi
-and install the MSI (Next-Next).   
+2. On Windows, [download](https://s3.amazonaws.com/amazoncloudwatch-agent/windows/amd64/latest/amazon-cloudwatch-agent.msi) the agent and install the MSI (Next-Next).   
 3. Install **AWS CLI** and create an `AmazonCloudWatchAgent` profile:
 
 ```
