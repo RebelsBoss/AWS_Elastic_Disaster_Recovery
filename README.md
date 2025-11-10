@@ -16,7 +16,56 @@ Server recovery from on-premises to the cloud in ~30 minutes.
 - SNS
 - Lambda: Function drs-start-recovery, Trigger — SNS (or directly from Alarm) **&** Calls **drs:StartRecovery** for **SOURCE_SERVER_ID**
 
-##
+## **Installing agents on on-prem Windows**
+
+### **AWS DRS Replication Agent (Windows)**
+
+1. Check that the OS is included in the list of supported Windows versions for DRS.  
+2. In the console **AWS DRS → Source servers → Add source server → Windows instructions**, copy the link to `AWSReplicationWindowsInstaller.exe`. 
+3. Download `AWSReplicationWindowsInstaller.exe` and run it **on Windows as Administrator** (preferably via PowerShell).   
+4. In the installer:
+   - specify the **Region** (the same one where DRS is configured);
+   - enter **AWS credentials** (key/secret or temporary STS);
+   - select which **drives** to replicate (C:, D:...).   
+5. The agent adds the server to the DRS console, **initial sync** starts, and then the status changes to **Continuous data protection / Ready for recovery**.
+
+### **CloudWatch Agent на on-prem Windows**
+
+1. In IAM, create a user/role with the **`CloudWatchAgentServerPolicy`** policy (minimum, so that the agent can send metrics and logs).   
+2. On Windows, download the agent:
+https://s3.amazonaws.com/amazoncloudwatch-agent/windows/amd64/latest/amazon-cloudwatch-agent.msi
+and install the MSI (Next-Next).   
+3. Install **AWS CLI** and create an `AmazonCloudWatchAgent` profile:
+
+```
+   aws configure --profile AmazonCloudWatchAgent
+   # Access key / Secret key from IAM user
+   # Region: the same as CloudWatch
+```
+
+4. I run the config wizard for the agent:
+
+```
+cd “C:\Program Files\Amazon\AmazonCloudWatchAgent”
+.\amazon-cloudwatch-agent-config-wizard.exe
+```
+
+Select:
+- On-premises,
+- basic set of metrics (CPU, Memory, Disk),
+- path to config, e.g. C:\Program Files\Amazon\AmazonCloudWatchAgent\config.json.
+
+5. Start the agent:
+
+```
+& “C:\Program Files\Amazon\AmazonCloudWatchAgent\amazon-cloudwatch-agent-ctl.ps1” `
+   -a start `
+   -m onPremise `
+   -c file:“C:\Program Files\Amazon\AmazonCloudWatchAgent\config.json”
+```
+
+6. In the CloudWatch console → Metrics → CWAgent, I see metrics from the server (CPU, Memory, Disk).
+
 
 
 
