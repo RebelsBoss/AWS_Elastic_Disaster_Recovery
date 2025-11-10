@@ -66,8 +66,25 @@ Select:
 
 6. In the CloudWatch console → Metrics → CWAgent, I see metrics from the server (CPU, Memory, Disk).
 
+## **CloudWatch Alarm (heartbeat)**
 
+1. In CloudWatch → Alarms → Create alarm.
+2. Metric: `CWAgent / <instance> / Processor % Processor Time (or any stable metric).`
 
+Conditions:
+
+Period = 60 seconds;
+
+Evaluation periods = 2;
+
+Condition: Lower < 0 (less than zero – this will not happen in a live metric).
+
+Additional configuration → Treat missing data as = Breaching.
+Then:
+
+when data is available → metric ≥ 0 → alarm = OK;
+
+when data is not available (server/agent/network down) → missing → alarm = ALARM.
 
 
 ## **Documentation**
