@@ -102,6 +102,8 @@ Part **drs.start_recovery()** corresponds to the `StartRecovery` API and launche
 
 In my scheme, a **direct Lambda call** is sufficient, and I only use SNS for email notifications.
 
+5. Also you can start [test](https://github.com/RebelsBoss/AWS_Elastic_Disaster_Recovery/blob/main/test-dr-lambda.json) Lambda function. Before start build all schema..
+
 ## **Documentation**
 
 - [What is AWS Elastic Disaster Recovery?](https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html)   
