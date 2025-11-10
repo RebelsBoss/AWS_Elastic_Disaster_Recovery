@@ -1,6 +1,6 @@
 # **AWS_Elastic_Disaster_Recovery**
 ### **On-prem server → AWS → auto failover**
-Server recovery from on-premises to the cloud in ~30 minutes.
+Server recovery from on-premises to the cloud in ~30 minutes. I am not describing all the processes in detail with a step-by-step guide. I am describing the general idea and the main steps to achieve the goal in this.
 
 ## **Short Architecture**
 
