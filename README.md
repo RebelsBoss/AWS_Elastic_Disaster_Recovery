@@ -15,7 +15,7 @@ Server recovery from on-premises to the cloud in ~30 minutes. I am not describin
 - CloudWatch: Namespace **CWAgent** with metrics from on-prem agent **&** Alarm with **treatMissingData = breaching**
 - SNS
 - Lambda: Function drs-start-recovery, Trigger — SNS (or directly from Alarm) **&** Calls **drs:StartRecovery** for **SOURCE_SERVER_ID**
-
+І
 ## **Installing agents on on-prem Windows**
 
 ### **AWS DRS Replication Agent (Windows)**
@@ -28,6 +28,9 @@ Server recovery from on-premises to the cloud in ~30 minutes. I am not describin
    - enter **AWS credentials** (key/secret or temporary STS);
    - select which **drives** to replicate (C:, D:...).   
 5. The agent adds the server to the DRS console, **initial sync** starts, and then the status changes to **Continuous data protection / Ready for recovery**.
+
+<img width="1116" height="678" alt="Снимок экрана 2025-11-10 145500" src="https://github.com/user-attachments/assets/f4ab752b-fba2-413f-ab15-9b6246eec5eb" />
+<img width="1732" height="198" alt="Снимок экрана 2025-11-10 145634" src="https://github.com/user-attachments/assets/820f13e2-fa1e-40e8-ab0c-02f70d3dea95" />
 
 ### **CloudWatch Agent на on-prem Windows**
 
