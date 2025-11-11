@@ -90,11 +90,18 @@ Select:
 
 Later, add this topic as an **Alarm action** in CloudWatch (so that you receive an email when an `ALARM` is triggered).
 
+<img width="1899" height="671" alt="Снимок экрана 2025-11-11 173902" src="https://github.com/user-attachments/assets/6e53b47c-ff72-4a95-8799-0f627ad30826" />
+
 ## **Lambda function**
 
 1. I create Lambda (Python 3.x) and link the IAM role above.
 2. I add the env variable SOURCE_SERVER_ID = s-xxxxxxxxxxxxxxxxx (the ID of my DRS source server).
+
+<img width="1663" height="326" alt="Снимок экрана 2025-11-11 174448" src="https://github.com/user-attachments/assets/d342f88c-8e52-438b-b4be-c22e22a58035" />
+
 3. Code in [lambda_function.py](https://github.com/RebelsBoss/AWS_Elastic_Disaster_Recovery/blob/main/lambda_function.py)
+
+<img width="1872" height="778" alt="image" src="https://github.com/user-attachments/assets/9b0c4e17-da9d-4ffb-b558-36a467a8b18c" />
 
 Part **drs.start_recovery()** corresponds to the `StartRecovery` API and launches the Recovery Instance from the last point.
 
@@ -105,6 +112,8 @@ Part **drs.start_recovery()** corresponds to the `StartRecovery` API and launche
 In my scheme, a **direct Lambda call** is sufficient, and I only use SNS for email notifications.
 
 5. Also you can start [test](https://github.com/RebelsBoss/AWS_Elastic_Disaster_Recovery/blob/main/test-dr-lambda.json) Lambda function. Before start build all schema..
+
+<img width="1816" height="780" alt="image" src="https://github.com/user-attachments/assets/cb9de1b0-e3c6-43f8-b719-ef788d0a35d3" />
 
 ## **Documentation**
 
