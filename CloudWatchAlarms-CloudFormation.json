@@ -1,0 +1,53 @@
+{
+    "Type": "AWS::CloudWatch::Alarm",
+    "Properties": {
+        "AlarmName": "dr-test1",
+        "Tags": [],
+        "ActionsEnabled": false,
+        "OKActions": [],
+        "AlarmActions": [
+            "arn:aws:sns:us-east-1:887108006328:dr-test"
+        ],
+        "InsufficientDataActions": [],
+        "Dimensions": [],
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Threshold": 0,
+        "ComparisonOperator": "LessThanOrEqualToThreshold",
+        "TreatMissingData": "breaching",
+        "Metrics": [
+            {
+                "Id": "e1",
+                "Label": "Expression1",
+                "ReturnData": true,
+                "Expression": "FILL(m1, -1)"
+            },
+            {
+                "Id": "m1",
+                "ReturnData": false,
+                "MetricStat": {
+                    "Metric": {
+                        "Namespace": "OnPremServers",
+                        "MetricName": "LogicalDisk % Free Space",
+                        "Dimensions": [
+                            {
+                                "Name": "instance",
+                                "Value": "C:"
+                            },
+                            {
+                                "Name": "host",
+                                "Value": "bolvanka"
+                            },
+                            {
+                                "Name": "objectname",
+                                "Value": "LogicalDisk"
+                            }
+                        ]
+                    },
+                    "Period": 60,
+                    "Stat": "Average"
+                }
+            }
+        ]
+    }
+}
