@@ -80,6 +80,8 @@ Select:
    - when data is available → metric ≥ 0 → alarm = `OK`;
    - when data is not available (server/agent/network down) → missing → alarm = `ALARM`.
   
+<img width="1905" height="742" alt="image" src="https://github.com/user-attachments/assets/210e2d88-d987-471e-b133-1933c7b2b61c" />
+  
 ## **SNS topic (notifications)**
 
 1. Open Amazon SNS → Topics → Create topic (**Standard** type).
