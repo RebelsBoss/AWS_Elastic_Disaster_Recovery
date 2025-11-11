@@ -69,7 +69,7 @@ Select:
 
 ## **CloudWatch Alarm (heartbeat)**
 
-1. In CloudWatch → Alarms → Create alarm.
+1. In CloudWatch → Alarms → [Create alarm](https://github.com/RebelsBoss/AWS_Elastic_Disaster_Recovery/blob/main/CloudWatchAlarms-CloudFormation.json).
 2. Metric: `CWAgent / <instance> / Processor % Processor Time (or any stable metric).`
 3. Conditions:
    - Period = 60 seconds;
