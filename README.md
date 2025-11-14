@@ -120,7 +120,11 @@ In my scheme, a **direct Lambda call** is sufficient, and I only use SNS for ema
 AWS DRS also has a scenario for returning from the cloud to on-premises.
 In short, to do this, you need to:
 
-1. Download the ISO file https://aws-elastic-disaster-recovery-<REGION>.s3.<REGION>.amazonaws.com/latest/failback_livecd/aws-failback-livecd-64bit.iso.
+1. Download the ISO file 
+
+```
+https://aws-elastic-disaster-recovery-<REGION>.s3.<REGION>.amazonaws.com/latest/failback_livecd/aws-failback-livecd-64bit.iso.
+```
 
 2. Prepare the VM for Failback Client.
 
@@ -132,7 +136,7 @@ In short, to do this, you need to:
 
 6. Start the LiveCD.
 
-Next, inside the Failback Client, when the wizard asks, you will need to specify: Region, AWS Access Key, Secret Key, and instance ID.
+Next, inside the Failback Client, when the wizard asks, you will need to specify: `Region`, `AWS Access Key`, `Secret Key`, and `instance ID`.
 
 <img width="1511" height="980" alt="Снимок экрана 2025-11-11 104246" src="https://github.com/user-attachments/assets/6a80b7a3-9c41-4c8f-a3e5-cfa6e6b8deb9" />
 
